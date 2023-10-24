@@ -7,3 +7,12 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+10.times do |i|
+  user = User.create(name: "User #{i}", email: "user#{i}@example.com")
+  5.times do |j|
+    post = user.posts.create(title: "Post #{j} by User #{i}", content: "This is the content for post #{j}.")
+    3.times do |k|
+      post.comments.create(content: "Comment #{k} on Post #{j} by User #{i}", user: user)
+    end
+  end
+end
